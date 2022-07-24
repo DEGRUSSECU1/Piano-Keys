@@ -23,15 +23,17 @@ const keyReturn = (event)=> {
    
 
 // Write a loop that runs the array elements through the function
+
 const KeyPressed = (note) => {
-    note.onmousedown = function(event) {
+    note.onmousedown = (event) => {
       keyPlay(event);
     }
-     note.onmouseup = function(event)  {
+     note.onmouseup = (event) => {
       keyReturn(event);
     }
   }
   notes.forEach(KeyPressed)
+
 // These variables store the buttons that progress the user through the lyrics
 let nextOne = document.getElementById('first-next-line');
 let nextTwo = document.getElementById('second-next-line');
@@ -47,13 +49,52 @@ nextThree.hidden = true;
 startOver.hidden= true;
 
 // Write anonymous event handler property and function for the first progress button
-
+nextOne.onclick = () => {
+    nextTwo.hidden = false;
+    nextOne.hidden = true;
+    document.getElementById("letter-note-five").innerHTML = "D";
+    document.getElementById("letter-note-six").innerHTML = "C";
+    
+  };
+  
 
 // Write anonymous event handler property and function for the second progress button
-
+nextTwo.onclick = () => {
+    nextThree.hidden = false;
+    nextTwo.hidden = true;
+  // Change song words
+      document.getElementById('word-five').innerHTML = 'DEAR';
+      document.getElementById('word-six').innerHTML = 'FRI-';
+      // Show last Lyric
+      lastLyric.style.display = 'inline-block';
+    document.getElementById("letter-note-three").innerHTML = "G";
+    document.getElementById("letter-note-four").innerHTML = "E";
+    document.getElementById("letter-note-five").innerHTML = "C";
+    document.getElementById("letter-note-six").innerHTML = "B";
+  
+  };
 
 // Write anonymous event handler property and function for the third progress button
-
+nextThree.onclick = () => {
+    startOver.hidden = false;
+    nextThree.hidden = true;
+  
+    document.getElementById("word-one").innerHTML = "HAP-";
+    document.getElementById("word-two").innerHTML = "PY";
+    document.getElementById("word-three").innerHTML = "BIRTH-";
+    document.getElementById("word-four").innerHTML = "DAY";
+    document.getElementById("word-five").innerHTML = "TO";
+    document.getElementById("word-six").innerHTML = "YOU!";
+    document.getElementById("letter-note-one").innerHTML = "F";
+    document.getElementById("letter-note-two").innerHTML = "F";
+    document.getElementById("letter-note-three").innerHTML = "E";
+    document.getElementById("letter-note-four").innerHaTML = "C";
+    document.getElementById("letter-note-five").innerHTML = "D";
+    document.getElementById("letter-note-six").innerHTML = "C";
+    //hide the lastLyric variable with the -END value
+    lastLyric.style.display = 'none';
+  };
+  
 
 // This is the event handler property and function for the startOver button
 startOver.onclick = function() {
@@ -63,12 +104,13 @@ startOver.onclick = function() {
   document.getElementById('letter-note-one').innerHTML = 'G';
   document.getElementById('word-two').innerHTML = 'PY';
   document.getElementById('letter-note-two').innerHTML = 'G';
-  document.getElementById('word-three').innerHTML = 'BIRTH-';
-  document.getElementById('letter-note-three').innerHTML = 'A';
-  document.getElementById('word-four').innerHTML = 'DAY';
-  document.getElementById('letter-note-four').innerHTML = 'G';
-  document.getElementById('word-five').innerHTML = 'TO';
-  document.getElementById('letter-note-five').innerHTML = 'C';
-  document.getElementById('word-six').innerHTML = 'YOU!';
-  document.getElementById('letter-note-six').innerHTML = 'B';
-}
+  document.getElementById("word-three").innerHTML = "BIRTH-";
+  document.getElementById("letter-note-three").innerHTML = "A";
+  document.getElementById("word-four").innerHTML = "DAY";
+  document.getElementById("letter-note-four").innerHTML = "G";
+  document.getElementById("word-five").innerHTML = "TO";
+  document.getElementById("letter-note-five").innerHTML = "C";
+  document.getElementById("word-six").innerHTML = "YOU!";
+  document.getElementById("letter-note-six").innerHTML = "B";
+
+};
